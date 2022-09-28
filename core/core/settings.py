@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # apps djangorestframework
     'rest_framework',
     #apps SGDA
-    'user',
+    'profiles',
     'inventory',
     'sales',
 ]
@@ -90,13 +90,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd6kpvtnbvasr9k',
-        'USER': 'opanodkgbulubu',
-        'PASSWORD': '0b85d9a20fcadf33097a756d7756fdd280f1dda0ee12fe8f8825c38a4fef79af',
-        'HOST': 'ec2-52-200-5-135.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'd6kpvtnbvasr9k',
+    #     'USER': 'opanodkgbulubu',
+    #     'PASSWORD': '0b85d9a20fcadf33097a756d7756fdd280f1dda0ee12fe8f8825c38a4fef79af',
+    #     'HOST': 'ec2-52-200-5-135.compute-1.amazonaws.com',
+    #     'PORT': '5432',
+    # }
 }
 
 
@@ -140,3 +145,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "profiles.Administrator"
+
