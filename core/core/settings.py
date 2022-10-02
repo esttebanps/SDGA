@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-d95z98dik1*so^fm$p$r2krtzrn)n7-@r9tpx#(4elf1z8i$g*
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'profiles',
     'inventory',
     'sales',
+    'corsheaders',
 ]
 
 SIMPLE_JWT = {
@@ -67,14 +68,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.permissions.AllowAny',
+        #'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
 }
 
@@ -103,19 +105,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    #'default': {
+     #   'ENGINE': 'django.db.backends.sqlite3',
+      #  'NAME': BASE_DIR / 'db.sqlite3',
+   # }
     
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'd6kpvtnbvasr9k',
-    #     'USER': 'opanodkgbulubu',
-    #     'PASSWORD': '0b85d9a20fcadf33097a756d7756fdd280f1dda0ee12fe8f8825c38a4fef79af',
-    #     'HOST': 'ec2-52-200-5-135.compute-1.amazonaws.com',
-    #     'PORT': '5432',
-    # }
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'd6naheolu05fdo',
+         'USER': 'txsdphhanluvcq',
+         'PASSWORD': '6ebc6e04265db65cf39b0bd38f7d52873582a02d694988389339afc3b82b1384',
+         'HOST': 'ec2-35-173-91-114.compute-1.amazonaws.com',
+         'PORT': '5432',
+      }
 }
 
 
