@@ -1,7 +1,7 @@
 from profiles.models import Administrator
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
-
+from .models import DataUser,Supplier,Client
 
 class AdministratorSerializer(serializers.ModelSerializer):
     email    = serializers.EmailField(required=True)
@@ -22,4 +22,7 @@ class SupplierSerializer(serializers.ModelSerializer):
     pass
     
 
-
+class SupplierSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Supplier
+        fields = '__all__'
